@@ -1,0 +1,65 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "ssh-connector",
+  "title": "SSH Connector",
+  "description": "Quickly connect from your SSH config file",
+  "icon": "extension_icon.png",
+  "author": "shon0",
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "sshConnector",
+      "title": "Connect SSH",
+      "description": "Connect to a server from your SSH config file",
+      "mode": "view"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "1.90.0",
+    "@raycast/utils": "1.17.0"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "1.0.11",
+    "@types/node": "20.8.10",
+    "@types/react": "18.3.3",
+    "eslint": "8.57.0",
+    "prettier": "3.3.3",
+    "typescript": "5.4.5"
+  },
+  "preferences": [
+    {
+      "name": "sshConfigPath",
+      "type": "textfield",
+      "required": true,
+      "title": "SSH Config Path",
+      "description": "Path to your SSH config file",
+      "default": "~/.ssh/config"
+    },
+    {
+      "name": "terminalApp",
+      "type": "dropdown",
+      "required": false,
+      "title": "Decide which Terminal Application you want to use",
+      "description": "If iTerm is available, you can use them instead of Terminal.",
+      "data": [
+        {
+          "title": "Terminal",
+          "value": "Terminal"
+        },
+        {
+          "title": "iTerm",
+          "value": "iTerm"
+        }
+      ],
+      "default": "Terminal"
+    }
+  ],
+  "scripts": {
+    "build": "ray build",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "prepublishOnly": "echo \"\\n\\nIt seems like you are trying to publish the Raycast extension to npm.\\n\\nIf you did intend to publish it to npm, remove the \\`prepublishOnly\\` script and rerun \\`npm publish\\` again.\\nIf you wanted to publish it to the Raycast Store instead, use \\`npm run publish\\` instead.\\n\\n\" && exit 1",
+    "publish": "npx @raycast/api@latest publish"
+  }
+}
