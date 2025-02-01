@@ -16,6 +16,13 @@ const configFilePath = expandHomeDir(preferences.sshConfigPath);
 
 // SSH Config のパース：コメント行と空行を除外し、"Host" 行からホスト名を抽出
 export const parseSSHConfig = async (): Promise<string[]> => {
+  // ファイルの存在確認
+  try {
+    await fs.access(configFilePath);
+  } catch {
+    throw new Error(`SSH config file not found: ${configFilePath}`);
+  }
+
   const content = await fs.readFile(configFilePath, "utf8");
   const lines = content.split("\n");
 
